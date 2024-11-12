@@ -1,167 +1,146 @@
-# (задача #A)
+# A
 
 
-print(''.join(set(input())))
+text = set(input())
+for i in text:
+    print(i, end='')
+
+# B
+
+fst = set(input())
+snd = set(input())
+for i in fst & snd:
+    print(i, end='')
 
 
+# C
 
-# (задача #B)
+n = set()
+textnum = int(input())
+for _ in range(textnum):
+    text = input()
+    n = n | set(text.split())
+for i in n:
+    print(i)
 
+# D
 
-print(''.join(set(input()).intersection(set(input()))))
-
-
-# (задача #C)
-
-
-items = set()
-for _ in range(int(input())):
-    string = input()
-    items |= set(string.split())  # items = items | set(string.split())
-for item in items:
-    print(item)
-
-
-# (задача #D)
-
-
-lilist1size = int(input())
-list2size = int(input())
-list1 = set()
-list2 = set()
-for _ in range(list1size):
-    list1.add(input())
-for _ in range(list2size):
-    list2.add(input())
-if len(junction := (list1 & list2)) != 0:
-    print(len(junction))
+n = int(input())
+m = int(input())
+listn = set()
+listm = set()
+for _ in range(n):
+    listn.add(input())
+for _ in range(m):
+    listm.add(input())
+if len(itog := (listn & listm)) != 0:
+    print(len(itog))
 else:
     print('Таких нет')
 
+# E
 
-# (задача #E)
-
-
-list1size = int(input())
-list2size = int(input())
-list1 = set()
-list2 = set()
-for _ in range(list1size + list2size):
-    name = input()
-    if name in list1:
-        list2.add(name)
+manCH = int(input())
+ovsCH = int(input())
+surnames = set()
+for _ in range(manCH + ovsCH):
+    surname = input()
+    if surname in surnames:
+        surnames.remove(surname)
     else:
-        list1.add(name)
-# print(list1, list2)
-if len(junction := (list1 ^ list2)) != 0:
-    print(len(junction))
+        surnames.add(surname)
+if surnames:
+    print(len(surnames))
 else:
     print('Таких нет')
 
+# F
 
-
-# (задача #F)
-
-
-
-list1size = int(input())
-list2size = int(input())
-list1 = set()
-list2 = set()
-for _ in range(list1size + list2size):
-    eater = input()
-    if eater in list1:
-        list2.add(eater)
+manCH = int(input())
+ovsCH = int(input())
+surnames = set()
+for _ in range(manCH + ovsCH):
+    surname = input()
+    if surname in surnames:
+        surnames.remove(surname)
     else:
-        list1.add(eater)
-# print(list1, list2)
-if len(junction := (list1 ^ list2)) != 0:
-    for eater in sorted(junction):
-        print(eater)
+        surnames.add(surname)
+if len(surnames) != 0:
+    for surname in sorted(surnames):
+        print(surname)
 else:
     print('Таких нет')
 
 
+# G
 
-
-# (задача #G)
-
-
-
-
-MORZE = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
-         'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K':
-         '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.',
-         'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-',
-         'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
-         '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
-         '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'}
-
-for char in input():
-    if char != ' ':
-        print(MORZE[char.upper()], end=' ')
+dictionary = {'A': '.-', 'B': '-...', 'C': '-.-.',
+              'D': '-..', 'E': '.', 'F': '..-.', 
+              'G': '--.', 'H': '....', 'I': '..', 
+              'J': '.---', 'K': '-.-', 'L': '.-..', 
+              'M': '--', 'N': '-.', 'O': '---', 
+              'P': '.--.', 'Q': '--.-', 'R': '.-.', 
+              'S': '...', 'T': '-', 'U': '..-', 
+              'V': '...-', 'W': '.--', 'X': '-..-', 
+              'Y': '-.--', 'Z': '--..', '0': '-----', 
+              '1': '.----', '2': '..---', '3': '...--', 
+              '4': '....-', '5': '.....', '6': '-....', 
+              '7': '--...', '8': '---..', '9': '----.'}
+for i in input():
+    if i != ' ':
+        print(dictionary[i.upper()], end=' ')
     else:
         print()
 
 
+# H
 
-# (задача #H)
-
-
-porridges_list = {}
-
+slr = dict()
 for _ in range(int(input())):
-    string = input()
-    eater, *porridges = string.split()
-    for porridge in porridges:
-        porridges_list[porridge] = porridges_list.get(porridge, []) + [eater]
-
-porridge = input()
-
-if porridge in porridges_list:
-    print('\n'.join(sorted(porridges_list[porridge])))
-else:
-    print('Таких нет')
-
-
-
-# (задача #I)
-
-
-
-objects = {}
-
-while (string := input()) != '':
-    words = string.split()
-    for item in words:
-        objects[item] = objects.get(item, 0) + 1
-
-for item in objects:
-    print(item, objects[item])
-
-
-
-# (задача #J)
-
-
-
-TRANSLITERATE_DICT = {
-    'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'E',
-    'Ж': 'ZH', 'З': 'Z', 'И': 'I', 'Й': 'I', 'К': 'K', 'Л': 'L', 'М': 'M',
-    'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U',
-    'Ф': 'F', 'Х': 'KH', 'Ц': 'TC', 'Ч': 'CH', 'Ш': 'SH', 'Щ': 'SHCH',
-    'Ы': 'Y', 'Э': 'E', 'Ю': 'IU', 'Я': 'IA', 'Ь': '', 'Ъ': ''
-}
-
-
-result = ''
-
-for char in input():
-    char_copy = char.upper()
-    if char_copy in TRANSLITERATE_DICT:
-        if char.isupper():
-            char = TRANSLITERATE_DICT[char_copy].capitalize()
+    spisok = input().split()
+    name = spisok[0]
+    kasha = spisok[1:]
+    for i in kasha:
+        if i not in slr:
+            slr[i] = [name]
         else:
-            char = TRANSLITERATE_DICT[char_copy].lower()
-    result += char
-print(result)
+            slr[i].append(name)
+key = input()
+if key in slr:
+    print("\n".join(sorted(slr[key])))
+else:
+    print("Таких нет")
+
+# I
+
+mesto = dict()
+while (text := input()) != '':
+    animals = text.split()
+    for animal in animals:
+        if animal in mesto:
+            mesto[animal] += 1
+        else:
+            mesto[animal] = 1
+for animal in mesto:
+    print(animal, mesto[animal])
+
+
+
+# J
+
+translit = {'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 
+            'Е': 'E', 'Ё': 'E', 'Ж': 'ZH', 'З': 'Z', 'И': 'I', 'Й': 'I', 
+            'К': 'K', 'Л': 'L', 'М': 'M', 'Н': 'N', 'О': 'O', 'П': 'P', 
+            'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U', 'Ф': 'F', 'Х': 'KH', 
+            'Ц': 'TC', 'Ч': 'CH', 'Ш': 'SH', 'Щ': 'SHCH', 'Ы': 'Y', 
+            'Э': 'E', 'Ю': 'IU', 'Я': 'IA', 'Ь': '', 'Ъ': ''}
+itog = ''
+for vse in input():
+    VSE = vse.upper()
+    if VSE in translit:
+        if vse.isupper():
+            vse = translit[VSE].capitalize()
+        else:
+            vse = translit[VSE].lower()
+    itog += vse
+print(itog)
