@@ -1,6 +1,8 @@
 #A
 
-print('\n'.join([f'{index}. {value}' for index, value in enumerate(input().split(), 1)]))
+for index, word in enumerate(input().split(), start=1):
+    print(f'{index}. {word}')
+
 
 #B
 
