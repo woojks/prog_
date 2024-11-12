@@ -36,11 +36,11 @@ for index, value in enumerate(lst, 1):
 #F
 
 from itertools import product
-cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'валет', 'дама', 'король', 'туз']
-suits = ['пик', 'треф', 'бубен', 'червей']
-suits.remove(input())
-for card, suit in product(cards, suits):
-    print(card, suit)
+num = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'валет', 'дама', 'король', 'туз']
+mast = ['пик', 'треф', 'бубен', 'червей']
+mast.remove(input())
+for n, m in product(num, mast):
+    print(n, m)
 
 
 #G
@@ -51,27 +51,26 @@ print('\n'.join([f'{name1} - {name2}' for name1, name2 in list(combinations(name
 
 задача #H
 
-from itertools import cycle, islice
-porridges = [input() for _ in range(int(input()))]
-days = int(input())
-print('\n'.join(islice(cycle(porridges), days)))
+from itertools import islice, cycle
+kasha = [input() for _ in range(int(input()))]
+kdays = int(input())
+menu = islice(cycle(kasha), kdays)
+print('\n'.join(menu))
 
 #I
 
-from itertools import product, islice
-size = int(input())
-nums = range(1, size + 1)
-table = [x * y for x, y in product(nums, repeat=2)]
-for row in range(size):
-    print(*islice(table, row * size, (row + 1) * size))
+import itertools
+n = int(input())
+num = range(1, n + 1)
+tab = [x * y for x, y in itertools.product(num, repeat=2)]
+for i in range(n):
+    print(*itertools.islice(tab, i * n, (i + 1) * n))
 
 #J
 
-from itertools import product
-num = int(input())
-nums = range(1, num - 1)
-table = list(product(nums, repeat=3))
+from itertools import combinations
+dol = int(input())
+num = range(1, dol)
 print('А Б В')
-for i in range(len(table)):
-    if sum(table[i]) == num:
-        print(*table[i])
+for fst, snd in list(combinations(num, 2)):
+    print(f'{fst} {snd - fst} {dol - snd}')
